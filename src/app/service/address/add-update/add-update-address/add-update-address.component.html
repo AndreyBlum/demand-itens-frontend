@@ -2,7 +2,7 @@
 <div class="component-container container-fluid">
   <form class="standard-form" *ngIf="formGroup" [formGroup]="formGroup" (ngSubmit)="formGroup.valid && save()" novalidate>
     <mat-form-field class="mr-3">
-      <input matInput placeholder="CEP" formControlName="cep" required autocomplete="off">
+      <input matInput placeholder="CEP" formControlName="cep" required autocomplete="off" (blur)="searchByCep()">
       <mat-error>Required Field</mat-error>
     </mat-form-field>
     <mat-form-field class="mr-3">

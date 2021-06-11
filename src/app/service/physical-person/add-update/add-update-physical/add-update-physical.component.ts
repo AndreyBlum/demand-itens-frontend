@@ -33,6 +33,11 @@ export class PhysicalAddUpdateComponent implements OnInit {
     })
   }
 
+  teste() {
+    const name = this.formGroup.get('name').value
+    console.log(name)
+  }
+
   save() {
     if (this.physical && this.physical.id) {
       this.physicalService.update(this.formGroup.value).subscribe(

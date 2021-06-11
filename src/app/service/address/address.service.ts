@@ -52,5 +52,9 @@ export class AddressService {
       catchError(error =>
          throwError(error)
     ))
-}
+  }
+
+  searchByCep(cep: number): Observable<Address> {
+    return this.http.get<Address>(`https://viacep.com.br/ws/${cep}/json/`)
+  }
 }

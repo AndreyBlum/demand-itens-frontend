@@ -2,11 +2,13 @@
 <div class="component-container container-fluid">
   <form class="standard-form" *ngIf="formGroup" [formGroup]="formGroup" (ngSubmit)="formGroup.valid && save()" novalidate>
     <mat-form-field class="mr-3">
-      <input matInput placeholder="Situação do Pedido" formControlName="situation" required autocomplete="off">
-      <mat-error>Required Field</mat-error>
+      <mat-select formControlName="situation" placeholder="Situação do pedido">
+        <mat-option value="OPEN">Aberto</mat-option>
+        <mat-option value="CLOSED">Fechado</mat-option>
+      </mat-select>
     </mat-form-field>
     <mat-form-field class="mr-3">
-      <input matInput placeholder="Data de Criação" formControlName="date" required autocomplete="off">
+      <input type="date" matInput placeholder="Data de Criação" formControlName="date" required autocomplete="off">
       <mat-error>Required Field</mat-error>
     </mat-form-field>
     <mat-form-field class="mr-3">

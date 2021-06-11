@@ -4,9 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
 
   {
-    path: "home", loadChildren: () => import('./features/home/home.component').then(module => module.HomeComponent)
-  },
-  {
     path: "physicals", loadChildren: () => import('./service/physical-person/list/list.module').then(module => module.ListModule)
   },
  {

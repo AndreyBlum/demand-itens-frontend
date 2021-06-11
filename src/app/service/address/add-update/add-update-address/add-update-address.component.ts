@@ -22,7 +22,6 @@ export class AddUpdateAddressComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    console.log("teste")
     this.address = this.activatedRoute.snapshot.data["address"];
     this.formGroup = this.formBuilder.group({
       id: [(this.address && this.address.id) ? this.address.id : null],
@@ -61,6 +60,19 @@ export class AddUpdateAddressComponent implements OnInit {
 
     }
 
+  }
+
+  searchByCep() {
+    const cep = this.formGroup.get('cep')
+    if(!cep.value){
+      alert('O CEP não foi provido')
+    }
+    const cep2 = this.addressService.searchByCep(cep.value)
+      console.log(cep2)
+    }
+
+  getCepValue() {
+    return this.formGroup.get('cep').value
   }
 
   delete() {
