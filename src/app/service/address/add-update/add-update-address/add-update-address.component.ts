@@ -68,7 +68,6 @@ export class AddUpdateAddressComponent implements OnInit {
       alert('O CEP não foi provido')
     }
     const cep2 = this.addressService.searchByCep(cep.value)
-      console.log(cep2)
     }
 
   getCepValue() {

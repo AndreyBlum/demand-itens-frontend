@@ -54,7 +54,29 @@ export class AddressService {
     ))
   }
 
-  searchByCep(cep: number): Observable<Address> {
-    return this.http.get<Address>(`https://viacep.com.br/ws/${cep}/json/`)
+  searchByCep(cep: number){
+    this.getJSON(`https://viacep.com.br/ws/${cep}/json/`, (err, data) => {
+      if (err !== null) {
+        alert('Alguma coisa deu errada no searchByCep')
+      } else {
+        return data
+      }
+    })
+
   }
+
+  getJSON = function(url, callback) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+    xhr.responseType = 'json';
+    xhr.onload = () => {
+      const status = xhr.status;
+      if (status === 200) {
+        callback(null, xhr.response);
+      } else {
+        callback(status, xhr.response);
+      }
+    };
+    xhr.send();
+};
 }
