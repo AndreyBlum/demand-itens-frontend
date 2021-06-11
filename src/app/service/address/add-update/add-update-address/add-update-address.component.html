@@ -1,0 +1,38 @@
+<mat-toolbar>{{(address && address.id)?'Editar endereço' : 'Cadastrar endereço'}}</mat-toolbar>
+<div class="component-container container-fluid">
+  <form class="standard-form" *ngIf="formGroup" [formGroup]="formGroup" (ngSubmit)="formGroup.valid && save()" novalidate>
+    <mat-form-field class="mr-3">
+      <input matInput placeholder="CEP" formControlName="cep" required autocomplete="off">
+      <mat-error>Required Field</mat-error>
+    </mat-form-field>
+    <mat-form-field class="mr-3">
+      <input matInput placeholder="País" formControlName="country" required autocomplete="off">
+      <mat-error>Required Field</mat-error>
+    </mat-form-field>
+    <mat-form-field class="mr-3">
+      <input matInput placeholder="Estado" formControlName="state" required autocomplete="off">
+      <mat-error>Required Field</mat-error>
+    </mat-form-field>
+    <mat-form-field class="mr-3">
+      <input matInput placeholder="Cidade" formControlName="city" required autocomplete="off">
+      <mat-error>Required Field</mat-error>
+    </mat-form-field>
+    <mat-form-field class="mr-3">
+      <input matInput placeholder="Bairro" formControlName="district" required autocomplete="off">
+      <mat-error>Required Field</mat-error>
+    </mat-form-field>
+    <mat-form-field class="mr-3">
+      <input matInput placeholder="Rua" formControlName="patio" required autocomplete="off">
+      <mat-error>Required Field</mat-error>
+    </mat-form-field>
+    <mat-form-field class="mr-3">
+      <input matInput placeholder="Numero" formControlName="number" required autocomplete="off">
+      <mat-error>Required Field</mat-error>
+    </mat-form-field>
+    <div class="button-line">
+      <button class="mr-3" mat-raised-button style="background-color: rgb(36, 36, 36);color: rgb(32, 167, 104);" [disabled]="!formGroup.valid">Save</button>
+      <button *ngIf="address && address.id" class="mr-3" style="background-color: rgb(36, 36, 36);color:rgb(238, 0, 0);" type="button" mat-raised-button color="warn"(click)="delete()">Delete</button>
+      <button style="background-color: rgb(36, 36, 36);color: rgb(241, 117, 0);" type="button" mat-raised-button color="accent" routerLink="/address">Cancel</button>
+    </div>
+  </form>
+</div>

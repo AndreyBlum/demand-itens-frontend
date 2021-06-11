@@ -1,0 +1,32 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+  [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar style="background-color: rgb(36, 36, 36);color:rgb(32, 167, 104);font-family: monospace;">Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item style="font-family: monospace;" routerLink="">Home</a>
+      <a mat-list-item style="font-family: monospace;" routerLink="physicals">Fisica</a>
+      <a mat-list-item style="font-family: monospace;" routerLink="legals">Juridica</a>
+      <a mat-list-item style="font-family: monospace;" routerLink="products">Produtos</a>
+      <a mat-list-item style="font-family: monospace;" routerLink="demands">Pedidos</a>
+      <a mat-list-item style="font-family: monospace;" routerLink="address">Endereços</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar style="background-color: rgb(36, 36, 36);">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <img src="https://i.imgur.com/c7JfMWz.png" width="30" height="30">
+      <span style="color: rgb(32, 167, 104);">Senior</span>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

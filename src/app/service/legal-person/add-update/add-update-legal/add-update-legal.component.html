@@ -1,0 +1,27 @@
+<mat-toolbar>{{(legal && legal.id)?'Edit Client' : 'Register Client'}}</mat-toolbar>
+<div class="component-container container-fluid">
+  <form class="standard-form" *ngIf="formGroup" [formGroup]="formGroup" (ngSubmit)="formGroup.valid && save()" novalidate>
+    <mat-form-field class="mr-3">
+      <input matInput placeholder="Name" formControlName="name" required autocomplete="off">
+      <mat-error>Required Field</mat-error>
+    </mat-form-field>
+    <mat-form-field class="mr-3">
+      <input matInput placeholder="CNPJ" formControlName="cnpj" required autocomplete="off">
+      <mat-error>Required Field</mat-error>
+    </mat-form-field>
+  <mat-form-field class="mr-3">
+    <mat-select formControlName="docType">
+      <mat-option value="LEGAL">Juridico</mat-option>
+    </mat-select>
+  </mat-form-field>
+    <mat-form-field class="mr-3">
+      <input matInput placeholder="Codigo" formControlName="clientCode" required autocomplete="off">
+      <mat-error>Required Field</mat-error>
+    </mat-form-field>
+    <div class="button-line">
+      <button class="mr-3" mat-raised-button style="background-color: rgb(36, 36, 36);color: rgb(32, 167, 104);" [disabled]="!formGroup.valid">Salvar</button>
+      <button *ngIf="legal && legal.id" class="mr-3" style="background-color: rgb(36, 36, 36);color:rgb(238, 0, 0);" type="button" mat-raised-button color="warn"(click)="delete()">Deletar</button>
+      <button style="background-color: rgb(36, 36, 36);color: rgb(241, 117, 0);" type="button" mat-raised-button color="accent" routerLink="/legals">Cancelar</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,36 @@
+<mat-toolbar>{{(product && product.id)?'Editar produto' : 'Cadastrar produto'}}</mat-toolbar>
+<div class="component-container container-fluid">
+  <form class="standard-form" *ngIf="formGroup" [formGroup]="formGroup" (ngSubmit)="formGroup.valid && save()" novalidate>
+    <mat-form-field class="mr-3">
+      <input matInput placeholder="Código" formControlName="code" required autocomplete="off">
+      <mat-error>Required Field</mat-error>
+    </mat-form-field>
+    <mat-form-field class="mr-3">
+      <input matInput placeholder="Descrição" formControlName="description" required autocomplete="off">
+      <mat-error>Required Field</mat-error>
+    </mat-form-field>
+  <mat-form-field class="mr-3">
+    <mat-select formControlName="status">
+      <mat-option value="ACTIVE">Ativo</mat-option>
+      <mat-option value="INACTIVE">Inativo</mat-option>
+    </mat-select>
+  </mat-form-field>
+    <mat-form-field class="mr-3">
+      <input matInput placeholder="Unidade de Medida" formControlName="unitOfmeasurement" required autocomplete="off">
+      <mat-error>Required Field</mat-error>
+    </mat-form-field>
+    <mat-form-field class="mr-3">
+      <input matInput placeholder="Quantidade total" formControlName="totalAmount" required autocomplete="off">
+      <mat-error>Required Field</mat-error>
+    </mat-form-field>
+    <mat-form-field class="mr-3">
+      <input matInput placeholder="Valor unitário" formControlName="unitaryValue" required autocomplete="off">
+      <mat-error>Required Field</mat-error>
+    </mat-form-field>
+    <div class="button-line">
+      <button class="mr-3" mat-raised-button style="background-color: rgb(36, 36, 36);color: rgb(32, 167, 104);" [disabled]="!formGroup.valid">Save</button>
+      <button *ngIf="product && product.id" class="mr-3" style="background-color: rgb(36, 36, 36);color:rgb(238, 0, 0);" type="button" mat-raised-button color="warn"(click)="delete()">Delete</button>
+      <button style="background-color: rgb(36, 36, 36);color: rgb(241, 117, 0);" type="button" mat-raised-button color="accent" routerLink="/products">Cancel</button>
+    </div>
+  </form>
+</div>

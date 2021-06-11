@@ -1,0 +1,35 @@
+<mat-toolbar>{{(demand && demand.id)?'Editar Pedido' : 'Registrar Pedido'}}</mat-toolbar>
+<div class="component-container container-fluid">
+  <form class="standard-form" *ngIf="formGroup" [formGroup]="formGroup" (ngSubmit)="formGroup.valid && save()" novalidate>
+    <mat-form-field class="mr-3">
+      <input matInput placeholder="Situação do Pedido" formControlName="situation" required autocomplete="off">
+      <mat-error>Required Field</mat-error>
+    </mat-form-field>
+    <mat-form-field class="mr-3">
+      <input matInput placeholder="Data de Criação" formControlName="date" required autocomplete="off">
+      <mat-error>Required Field</mat-error>
+    </mat-form-field>
+    <mat-form-field class="mr-3">
+      <input matInput placeholder="Preço Total" formControlName="totalValue" required autocomplete="off">
+      <mat-error>Required Field</mat-error>
+    </mat-form-field>
+    <mat-form-field class="mr-3">
+      <input matInput placeholder="Desconto" formControlName="discount" autocomplete="off">
+      <mat-error>Required Field</mat-error>
+    </mat-form-field>
+    <mat-form-field class="mr-3">
+      <input matInput placeholder="Endereço" formControlName="address" autocomplete="off">
+      <mat-error>Required Field</mat-error>
+    </mat-form-field>
+    <mat-form-field class="mr-3">
+      <input matInput placeholder="Cliente" formControlName="client"  autocomplete="off">
+      <mat-error>Required Field</mat-error>
+    </mat-form-field>
+
+    <div class="button-line">
+      <button class="mr-3" mat-raised-button style="background-color: rgb(36, 36, 36);color: rgb(32, 167, 104);" [disabled]="!formGroup.valid">Save</button>
+      <button *ngIf="demand && demand.id" class="mr-3" style="background-color: rgb(36, 36, 36);color:rgb(238, 0, 0);" type="button" mat-raised-button color="warn"(click)="delete()">Delete</button>
+      <button style="background-color: rgb(36, 36, 36);color: rgb(241, 117, 0);" type="button" mat-raised-button color="accent" routerLink="/demands">Cancel</button>
+    </div>
+  </form>
+</div>

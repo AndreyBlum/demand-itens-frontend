@@ -1,0 +1,56 @@
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { catchError, map } from 'rxjs/operators';
+import { Address } from './address';
+import { AddressPage } from './address-page';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AddressService {
+
+  private type = 'address';
+  private url = environment.backUrl;
+
+  constructor(private http: HttpClient) { }
+
+  // listAll(): Observable<PhysicalPerson[]> {
+  //   return this.http.get<PhysicalPerson[]>(`${this.url}/${this.type}/all`)
+  // }
+
+  listById(id: number): Observable<Address> {
+    return this.http.get<Address>(`${this.url}/${this.type}/id/${id}`);
+  }
+
+  add(address: Address): Observable<Address> {
+    return this.http.post<Address>(`${this.url}/${this.type}`, address);
+  }
+
+  update(address: Address): Observable<Address> {
+    return this.http.put<Address>(`${this.url}/${this.type}/${address.id}`, address);
+  }
+
+  delete(addressId: number): Observable<void> {
+    return this.http.delete<void>(`${this.url}/${this.type}/delete/${addressId}`);
+  }
+  listPage(page: number, size: number):Observable<AddressPage> {
+    let params = new HttpParams();
+
+    params = params.append('page', String(page));
+    params = params.append('size', String(size));
+
+    return this.http.get(`${this.url}/${this.type}`, {params})
+    .pipe(
+      map((addressPage: AddressPage): any => {
+        if (addressPage && addressPage.content && addressPage.content.length)
+        addressPage.content
+
+          return addressPage;
+      }),
+      catchError(error =>
+         throwError(error)
+    ))
+}
+}
