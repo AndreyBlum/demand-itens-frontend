@@ -25,7 +25,7 @@ export class AddressService {
   }
 
   add(address: Address): Observable<Address> {
-    return this.http.post<Address>(`${this.url}/${this.type}`, address);
+    return this.http.post<Address>(`${this.url}/${this.type}/add`, address);
   }
 
   update(address: Address): Observable<Address> {
@@ -54,18 +54,20 @@ export class AddressService {
     ))
   }
 
-  searchByCep(cep: number){
+  searchByCep(cep: string) {
+    let cepData = ''
     this.getJSON(`https://viacep.com.br/ws/${cep}/json/`, (err, data) => {
       if (err !== null) {
         alert('Alguma coisa deu errada no searchByCep')
-      } else {
-        return data
       }
+      const cepData = [data.bairro, data.localidade, data.uf]
+      console.log(cepData)
     })
-
+    console.log(cepData)
+    return cepData
   }
 
-  getJSON = function(url, callback) {
+  getJSON(url, callback) {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
     xhr.responseType = 'json';

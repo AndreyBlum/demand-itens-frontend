@@ -63,16 +63,21 @@ export class AddUpdateAddressComponent implements OnInit {
   }
 
   searchByCep() {
-    const cep = this.formGroup.get('cep')
-    if(!cep.value){
+    const cep = this.formGroup.get('cep').value
+    if(!cep){
       alert('O CEP não foi provido')
     }
-    const cep2 = this.addressService.searchByCep(cep.value)
+    this.addressService.getJSON(`https://viacep.com.br/ws/${cep}/json/`, (err, data) => {
+      if (err !== null) {
+        alert('Alguma coisa deu errada no searchByCep')
+      }
+    this.formGroup.get('country').setValue('Brasil')
+    this.formGroup.get('state').setValue(data.uf)
+    this.formGroup.get('city').setValue(data.localidade)
+    this.formGroup.get('district').setValue(data.bairro)
+    this.formGroup.get('patio').setValue(data.logradouro)
     }
-
-  getCepValue() {
-    return this.formGroup.get('cep').value
-  }
+  )}
 
   delete() {
     if (confirm(`Tem certeza que quer excluir ${this.address.id}?`)) {

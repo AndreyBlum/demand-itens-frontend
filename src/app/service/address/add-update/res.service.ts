@@ -14,7 +14,7 @@ export class Res implements Resolve<Address> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const id = route.params["id"];
-
+    console.log(route)
     if(id) {
       return this.addressService.listById(id);
     }
