@@ -23,26 +23,23 @@ export class AddUpdateDemandComponent implements OnInit {
 
   ngOnInit(): void {
     this.demand = this.activatedRoute.snapshot.data["demand"];
-
+    console.log(this.demand)
     this.formGroup = this.formBuilder.group({
       situation: [(this.demand && this.demand.situation) ? this.demand.situation : ""],
       date: [(this.demand && this.demand.date) ? this.demand.date : null],
       totalValue: [(this.demand && this.demand.totalValue) ? this.demand.totalValue : null],
       discount: [(this.demand && this.demand.discount) ? this.demand.discount : null],
-      address: [(this.demand && this.demand.address) ? { ...this.demand.address} : null],
-      client: [(this.demand && this.demand.client) ? { ...this.demand.client} : null],
+      address: [(this.demand && this.demand.address) ? this.demand.address.id : null],
+      client: [(this.demand && this.demand.client) ? this.demand.client.id : null],
     })
   }
 
   save() {
     const values: any = this.formGroup.getRawValue();
 
-    values.client = {id: values.client}
-    values.address = {id: values.address}
-
     if (this.demand && this.demand.id) {
       this.demandService.update(values).subscribe(
-        (orderUpdate) => {
+        (demandUpdate) => {
           this.router.navigateByUrl("/demands");
         },
         error => {
@@ -52,7 +49,7 @@ export class AddUpdateDemandComponent implements OnInit {
   }
     else {
       this.demandService.add(values).subscribe(
-        (orderSingUp) => {
+        (demandSignUp) => {
           this.router.navigateByUrl("/demands");
         },
         error => {

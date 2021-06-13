@@ -8,13 +8,12 @@ import { DemandService } from '../demand.service';
 @Injectable({
   providedIn: 'root'
 })
-export class DemandResolverService implements Resolve<Demand> {
+export class Res implements Resolve<Demand> {
 
   constructor(private demandService: DemandService) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const id = route.params["id"];
-
     if(id) {
       return this.demandService.listById(id);
     }

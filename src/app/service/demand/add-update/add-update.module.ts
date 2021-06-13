@@ -8,14 +8,14 @@ import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { AddUpdateDemandComponent } from './add-update-demand/add-update-demand.component';
-import { AddUpdateDemandRoutingModule } from './add-update-routing.module';
+import { AddUpdateRoutingModule } from './add-update-routing.module';
 
 @NgModule({
   declarations: [AddUpdateDemandComponent],
   imports: [
     CommonModule,
     MatSelectModule,
-    AddUpdateDemandRoutingModule,
+    AddUpdateRoutingModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
