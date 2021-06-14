@@ -20,10 +20,8 @@
       <mat-error>Required Field</mat-error>
     </mat-form-field>
     <mat-form-field class="mr-3">
-      <mat-select matSelect placeholder="Endereço" formControlName="address">
-        <mat-option value="3">3</mat-option>
-        <mat-error>Required Field</mat-error>
-      </mat-select>
+      <input matInput placeholder="Endereço" formControlName="address" autocomplete="off">
+      <mat-error>Required Field</mat-error>
     </mat-form-field>
     <mat-form-field class="mr-3">
       <input matInput placeholder="Cliente" formControlName="client"  autocomplete="off">

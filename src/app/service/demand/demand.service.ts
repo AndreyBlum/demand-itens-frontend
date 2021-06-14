@@ -26,7 +26,7 @@ export class DemandService {
 
   add(demand: Demand): Observable<Demand> {
     console.log(demand.id)
-    return this.http.post<Demand>(`${this.url}/${this.type}`, demand);
+    return this.http.post<Demand>(`${this.url}/${this.type}/add`, demand);
   }
 
   update(demand: Demand): Observable<Demand> {

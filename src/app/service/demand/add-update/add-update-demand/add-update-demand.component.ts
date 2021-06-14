@@ -29,8 +29,8 @@ export class AddUpdateDemandComponent implements OnInit {
       date: [(this.demand && this.demand.date) ? this.demand.date : null],
       totalValue: [(this.demand && this.demand.totalValue) ? this.demand.totalValue : null],
       discount: [(this.demand && this.demand.discount) ? this.demand.discount : null],
-      address: [(this.demand && this.demand.address) ? { ...this.demand.address} : null],
-      client: [(this.demand && this.demand.client) ? { ...this.demand.client} : null],
+      address: [(this.demand && this.demand.address) ? { ...this.demand.address}.id : null],
+      client: [(this.demand && this.demand.client) ? { ...this.demand.client}.id : null],
     })
   }
 
