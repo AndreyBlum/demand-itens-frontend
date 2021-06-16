@@ -8,10 +8,6 @@
   <div *ngIf="dataSource">
 
     <table mat-table [dataSource]="dataSource.content" class="mat-elevation-z8">
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef>ID</th>
-        <td mat-cell *matCellDef="let physical">{{ physical.id }}</td>
-      </ng-container>
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Nome</th>
         <td mat-cell *matCellDef="let physical" routerLink="/physicals/update/{{physical.id}}">{{ physical.name }}</td>

@@ -9,10 +9,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { AddUpdateDemandComponent } from './add-update-demand/add-update-demand.component';
 import { AddUpdateRoutingModule } from './add-update-routing.module';
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+
+export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
   declarations: [AddUpdateDemandComponent],
   imports: [
+    NgxMaskModule.forRoot(),
     CommonModule,
     MatSelectModule,
     AddUpdateRoutingModule,

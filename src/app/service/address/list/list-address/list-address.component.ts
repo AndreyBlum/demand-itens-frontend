@@ -13,7 +13,7 @@ import { AddressService } from '../../address.service';
 export class AddressListComponent implements OnInit {
 
   dataSource: AddressPage = null;
-  columnsTable = ['id', 'cep', 'country', 'state', 'city', 'district', 'patio', 'number'];
+  columnsTable = ['cep', 'country', 'state', 'city', 'district', 'patio', 'number'];
   pageEvent: PageEvent;
 
 

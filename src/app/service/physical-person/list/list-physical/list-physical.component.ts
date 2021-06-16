@@ -53,7 +53,7 @@ changePage(event: PageEvent) {
   )
 }
 
-  columnsTable = ['name', 'id', 'docType', 'cpf', 'clientCode'];
+  columnsTable = ['name', 'docType', 'cpf', 'clientCode'];
 
 }
 
