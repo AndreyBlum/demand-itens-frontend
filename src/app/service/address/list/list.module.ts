@@ -11,11 +11,14 @@ import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { AddressListRoutingModule } from './list-routing.module';
 import { AddressListComponent } from './list-address/list-address.component';
+import { NgxMaskModule, IConfig } from 'ngx-mask';
 
+export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
   declarations: [AddressListComponent],
   imports: [
+    NgxMaskModule.forRoot(),
     CommonModule,
     AddressListRoutingModule,
     MatTableModule,

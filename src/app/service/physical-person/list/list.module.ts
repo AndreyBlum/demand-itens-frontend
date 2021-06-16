@@ -10,10 +10,14 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+
+export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
   declarations: [ListPhysicalComponent],
   imports: [
+    NgxMaskModule.forRoot(),
     MatPaginatorModule,
     CommonModule,
     ListRoutingModule,

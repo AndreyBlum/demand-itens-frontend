@@ -8,13 +8,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { AddUpdateRoutingModule } from './add-update-routing.module';
 import { PhysicalAddUpdateComponent } from './add-update-physical/add-update-physical.component';
+import { NgxMaskModule, IConfig } from 'ngx-mask';
 
-
-
+export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
   declarations: [PhysicalAddUpdateComponent],
   imports: [
+    NgxMaskModule.forRoot(),
     CommonModule,
     AddUpdateRoutingModule,
     MatSelectModule,

@@ -13,7 +13,7 @@
       </ng-container>
       <ng-container matColumnDef="cep">
         <th mat-header-cell *matHeaderCellDef>CEP</th>
-        <td mat-cell *matCellDef="let address" routerLink="/address/update/{{address.id}}">{{ address.cep }}</td>
+        <td mat-cell *matCellDef="let address" routerLink="/address/update/{{address.id}}">{{ address.cep | mask: '00000-000'}}</td>
       </ng-container>
       <ng-container matColumnDef="country">
         <th mat-header-cell *matHeaderCellDef>País</th>
